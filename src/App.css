@@ -1,5 +1,10 @@
-.App {
-  text-align: center;
+/* Color scheme variables */
+:root {
+    --dark-green: #1F271B;
+    --light-gray: #77878B;
+    --dark-gray: #305252;
+    --light-green: #8EB19D;
+    --smoke-white: #8EB19D;
 }
 
 .App-logo {
