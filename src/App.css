@@ -7,21 +7,12 @@
     --smoke-white: #8EB19D;
 }
 
-.App-logo {
-  height: 40vmin;
+/* Use this to negate any padding and margins */
+.noSpacing {
+    padding: 0;
+    margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+.reactApp {
+    background-color: var(--smoke-white);
 }
