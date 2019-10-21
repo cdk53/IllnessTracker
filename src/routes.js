@@ -41,5 +41,5 @@ app.get('/illnesses', function (req, res) {
 
 // Starting our server.
 app.listen(3000, () => {
-    console.log('Go to http://localhost:3000/users so you can see the data.');
+    console.log('Go to http://localhost:3000/illnesses so you can see the data.');
 });
