@@ -4,15 +4,15 @@
     --light-gray: #77878B;
     --dark-gray: #305252;
     --light-green: #8EB19D;
-    --smoke-white: #8EB19D;
+    --smoke-white: #f4f4f9;
+}
+
+html {
+    background-color: var(--smoke-white);
 }
 
 /* Use this to negate any padding and margins */
 .noSpacing {
     padding: 0;
     margin: 0;
-}
-
-.reactApp {
-    background-color: var(--smoke-white);
 }
