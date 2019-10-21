@@ -14,7 +14,7 @@ export default class SearchBar extends React.Component {
             <div className="row">
                 <div className="col-12">
                     <form>
-                        <input type="text" name="search"></input>
+                        <input type="text" name="search" placeholder="illness name"></input>
                     </form>
                 </div>
             </div>

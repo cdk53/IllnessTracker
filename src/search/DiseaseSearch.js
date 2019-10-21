@@ -16,7 +16,7 @@ export default class MenuBar extends React.Component {
                 <div className="col-6">
                     <h2>Welcome to the Illness Tracker</h2>
                     <h4>Enter the name of an illness to learn more about it</h4>
-                    <SearchBar/>
+                    <SearchBar />
                 </div>
             </div>
         );
