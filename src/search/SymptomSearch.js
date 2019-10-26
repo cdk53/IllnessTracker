@@ -15,7 +15,7 @@ export default class SymptomSearch extends React.Component {
     }
 
     getIllnesses() {
-        fetch('http://localhost:3000/illnesses')
+        fetch('http://localhost:4000/illnesses')
             .then(response => response.json())
             .then(response => this.setState({givenData: response}))
 

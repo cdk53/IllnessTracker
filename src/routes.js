@@ -63,6 +63,6 @@ app.get('/symptomtest', function (req, res) {
 });
 
 // Starting our server.
-app.listen(3000, () => {
-    console.log('Go to http://localhost:3000/illnesses so you can see the data.');
+app.listen(4000, () => {
+    console.log('Go to http://localhost:4000/illnesses so you can see the data.');
 });
