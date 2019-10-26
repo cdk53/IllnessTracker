@@ -35,7 +35,6 @@ app.use((req, res, next) => {
 app.get('/illnesses', function (req, res) {
     // Connecting to the database.
     connection.getConnection(function (err, connection) {
-
     // Executing the MySQL query (select all data from the 'users' table).
     connection.query('SELECT * FROM symptoms', function (error, results, fields) {
       // If some error occurs, we throw an error.
@@ -46,13 +45,15 @@ app.get('/illnesses', function (req, res) {
     });
   });
 });
-// Returns all symptom1 from illness table
-app.get('/symptomtest', function (req, res) {
+// Returns all illness data for a given illness from illness table
+app.get('/illnesses/get', function (req, res) {
     // Connecting to the database.
     connection.getConnection(function (err, connection) {
+    const {name} = req.query;
+    const SELECT_ILLNESS = 'SELECT * FROM symptoms LIKE illness_name="' + name + '"';
 
     // Executing the MySQL query (select all data from the 'users' table).
-    connection.query('SELECT symptom1 FROM symptoms', function (error, results, fields) {
+    connection.query(SELECT_ILLNESS, function (error, results, fields) {
       // If some error occurs, we throw an error.
       if (error) throw error;
 
