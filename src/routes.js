@@ -7,6 +7,8 @@
     just pours out all the contents of the illneses table
 */
 
+// Routes.js is a REST API for Illness Tracker
+
 // Dependencies for the database connection
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -22,6 +24,12 @@ const connection = mysql.createPool({
 
 // Start the app
 const app = express();
+
+// Allow all CORS connections
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
 
 // Creating a GET route that returns data from the 'users' table.
 app.get('/illnesses', function (req, res) {
