@@ -42,7 +42,7 @@ app.get('/illnesses', function (req, res) {
       if (error) throw error;
 
       // Getting the 'response' from the database and sending it to our route. This is were the data is.
-      res.send(results)
+      res.send(results);
     });
   });
 });
@@ -57,7 +57,7 @@ app.get('/symptomtest', function (req, res) {
       if (error) throw error;
 
       // Getting the 'response' from the database and sending it to our route. This is were the data is.
-      res.send(results)
+      res.send(results);
     });
   });
 });

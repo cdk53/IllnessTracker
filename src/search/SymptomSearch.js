@@ -12,17 +12,24 @@ export default class SymptomSearch extends React.Component {
         this.state = {
             givenData: null
         }
+
+        this.getIllnesses = this.getIllnesses.bind(this);
+    }
+
+    fetchData() {
+        if(this.state.givenData === null) {
+            fetch('http://localhost:4000/illnesses')
+                .then(response => response.json())
+                .then(response => this.setState({givenData: response}))
+        }
     }
 
     getIllnesses() {
-        fetch('http://localhost:4000/illnesses')
-            .then(response => response.json())
-            .then(response => this.setState({givenData: response}))
-
         return JSON.stringify(this.state.givenData);
     }
 
     render() {
+        this.fetchData();
         return(
             <div className="row justify-content-center diseaseSearchContainer">
                 <div className="col-6">
