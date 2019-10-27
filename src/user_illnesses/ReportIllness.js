@@ -12,8 +12,25 @@ export default class ReportIllness extends React.Component {
         this.insertData = this.insertData.bind(this);
     }
 
-    insertData(illnessName, duration, timeOfYear, gender, levelOfDiscomfort) {
+    insertData(illnessName, duration, timeOfYear, gender, discomfort) {
         // insertData has access to all elements in the IllnessReportForm form
+        console.log("insertData ran");
+        /*fetch('/illnesses/insertUserReportedIllnessData', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: {
+                "name": illnessName,
+                "dur": duration,
+                "time_of": timeOfYear,
+                "gender": gender,
+                "discomf": discomfort
+            }
+        }); */
+        fetch('http://localhost:4000/illnesses/insertUserReportedIllnessData?name='+illnessName+'&dur='+duration+'&time_of='+timeOfYear+'&gender='+gender+'&discomf='+discomfort)
+            .then(response => response.json())
     }
 
     render() {

@@ -27,8 +27,15 @@ const app = express();
 
 // Allow all CORS connections
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
+    console.log('request', req.url, req.body, req.method);
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-token");
+    if(req.method === 'OPTIONS') {
+        res.end();
+    }
+    else {
+        next();
+    }
 });
 
 // Creating a GET route that returns data from the 'users' table.
@@ -82,20 +89,20 @@ app.get('/illnesses/getIllnessBySymptom', function (req, res) {
   });
 });
 
-// Returns all illness data for a given symptom name from the symptoms table
+// Inserts user reported illness data into the user_illnesses table
 app.get('/illnesses/insertUserReportedIllnessData', function (req, res) {
     // Connecting to the database.
     connection.getConnection(function (err, connection) {
     const {name, dur, time_of, gender, discomf} = req.query;
-    const INSERT_INTO_USER_REPORTED_ILLNESSES = 'insert into illnesses.user_reported_illnesses values("'+name+'", "'+dur+'", "'+time_of+'", "'+gender+'", "'+discomf+'"';
-
+    const INSERT_INTO_USER_REPORTED_ILLNESSES = 'insert into illnesses.user_reported_illnesses values("'+name+'", "'+dur+'", "'+time_of+'", "'+gender+'", "'+discomf+'")';
+    console.log(INSERT_INTO_USER_REPORTED_ILLNESSES);
     // Executing the MySQL query (select all data from the 'users' table).
     connection.query(INSERT_INTO_USER_REPORTED_ILLNESSES, function (error, results, fields) {
       // If some error occurs, we throw an error.
       if (error) throw error;
 
       // Getting the 'response' from the database and sending it to our route.
-      res.send(results);
+      res.send('Successfully inserted');
     });
   });
 });
