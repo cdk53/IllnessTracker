@@ -26,7 +26,9 @@ export default class SymptomSearch extends React.Component {
     }
 
     generateReport() {
-        console.log(this.state.illnessData);
+        if(this.state.hasData && typeof this.state.illnessData[0] !== 'undefined') {
+            return this.state.illnessData[0].map(this.renderProduct);
+        }
     }
 
     renderProduct = ({illness_name, symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10}) => (
@@ -53,7 +55,7 @@ export default class SymptomSearch extends React.Component {
                     <h4>Search for an illness by symptoms</h4>
                     <SearchBar fetchData={this.fetchData} defaultText="Symptom"/>
                     <div className="row justify-content-center">
-                        {this.state.hasData && this.state.illnessData.map(this.renderProduct)}
+                        {this.generateReport()}
                     </div>
                 </div>
             </div>

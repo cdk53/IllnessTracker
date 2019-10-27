@@ -21,12 +21,15 @@ export default class DiseaseSearch extends React.Component {
         fetch('http://localhost:4000/illnesses/getIllnessByName?name='+givenName)
             .then(response => response.json())
             .then(response => this.setState({illnessData: response}))
-        // Since we have retrieved data, set hasData to true
+
+        // Data has been fetched
         this.setState({hasData: true});
     }
 
     generateReport() {
-        console.log(this.state.illnessData);
+        if(this.state.hasData && typeof this.state.illnessData[0] !== 'undefined') {
+            return this.state.illnessData[0].map(this.renderProduct);
+        }
     }
 
     renderProduct = ({illness_name, symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10, treatment1, treatment2, treatment3, treatment4, treatment5, treatment6, treatment7, treatment8, treatment9, treatment10}) => (
@@ -43,7 +46,7 @@ export default class DiseaseSearch extends React.Component {
             {symptom8 !== null && <li className="symptom_list" key={symptom8}>{symptom8}</li>}
             {symptom9 !== null && <li className="symptom_list" key={symptom9}>{symptom9}</li>}
             {symptom10 !== null && <li className="symptom_list" key={symptom10}>{symptom10}</li>}
-            <p className="symptom_title">Available Treatments:</p>
+            <br/><p className="symptom_title">Available Treatments:</p>
             {treatment1 !== null && <li className="symptom_list" key={treatment1}>{treatment1}</li>}
             {treatment2 !== null && <li className="symptom_list" key={treatment2}>{treatment2}</li>}
             {treatment3 !== null && <li className="symptom_list" key={treatment3}>{treatment3}</li>}
@@ -54,9 +57,10 @@ export default class DiseaseSearch extends React.Component {
             {treatment8 !== null && <li className="symptom_list" key={treatment8}>{treatment8}</li>}
             {treatment9 !== null && <li className="symptom_list" key={treatment9}>{treatment9}</li>}
             {treatment10 !== null && <li className="symptom_list" key={treatment10}>{treatment10}</li>}
-        </div>)
+        </div>);
 
     render() {
+        if(typeof this.state.illnessData[0] !== 'undefined') {this.generateReport();}
         return(
             <div className="row justify-content-center diseaseSearchContainer">
                 <div className="col-10">
@@ -64,7 +68,8 @@ export default class DiseaseSearch extends React.Component {
                     <h4>Enter the name of an illness to learn more about it</h4>
                     <SearchBar fetchData={this.fetchData} defaultText="Illness Name"/>
                     <div className="row justify-content-center">
-                        {this.state.hasData && this.state.illnessData.map(this.renderProduct)}
+                        {this.generateReport()}
+                        {console.log(this.state.illnessData)}
                     </div>
                 </div>
             </div>
