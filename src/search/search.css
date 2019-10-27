@@ -4,6 +4,23 @@
     background-color: var(--smoke-white);
 }
 
+.search_bar {
+    margin-bottom: 15px;
+}
+
 .report {
     border: 1px solid black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: var(--sonic-silver);
+    box-shadow: 3px 5px 10px var(--light-gray);
+    color: var(--smoke-white);
+}
+
+.illness_name {
+    font-size: 20px;
+}
+
+.symptom_title {
+    font-style: italic;
 }
