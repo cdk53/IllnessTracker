@@ -82,6 +82,24 @@ app.get('/illnesses/getIllnessBySymptom', function (req, res) {
   });
 });
 
+// Returns all illness data for a given symptom name from the symptoms table
+app.get('/illnesses/insertUserReportedIllnessData', function (req, res) {
+    // Connecting to the database.
+    connection.getConnection(function (err, connection) {
+    const {name, dur, time_of, gender, discomf} = req.query;
+    const INSERT_INTO_USER_REPORTED_ILLNESSES = 'insert into illnesses.user_reported_illnesses values("'+name+'", "'+dur+'", "'+time_of+'", "'+gender+'", "'+discomf+'"';
+
+    // Executing the MySQL query (select all data from the 'users' table).
+    connection.query(INSERT_INTO_USER_REPORTED_ILLNESSES, function (error, results, fields) {
+      // If some error occurs, we throw an error.
+      if (error) throw error;
+
+      // Getting the 'response' from the database and sending it to our route.
+      res.send(results);
+    });
+  });
+});
+
 // Starting our server.
 app.listen(4000, () => {
     console.log('Go to http://localhost:4000/illnesses so you can see the data.');
