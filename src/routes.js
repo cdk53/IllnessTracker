@@ -51,7 +51,7 @@ app.get('/illnesses/getIllnessByName', function (req, res) {
     // Connecting to the database.
     connection.getConnection(function (err, connection) {
     const {name} = req.query;
-    const SELECT_ILLNESS = 'SELECT * FROM symptoms WHERE illness_name like"%' + name + '%"';
+    const SELECT_ILLNESS = 'call illnesses.get_illness_data("'+name+'")';
 
     // Executing the MySQL query (select all data from the 'users' table).
     connection.query(SELECT_ILLNESS, function (error, results, fields) {
@@ -69,7 +69,7 @@ app.get('/illnesses/getIllnessBySymptom', function (req, res) {
     // Connecting to the database.
     connection.getConnection(function (err, connection) {
     const {name} = req.query;
-    const SELECT_ILLNESS = 'call search_by_symptom("'+name+'")';
+    const SELECT_ILLNESS = 'call illnesses.search_by_symptom("'+name+'")';
 
     // Executing the MySQL query (select all data from the 'users' table).
     connection.query(SELECT_ILLNESS, function (error, results, fields) {

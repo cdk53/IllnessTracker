@@ -29,7 +29,7 @@ export default class DiseaseSearch extends React.Component {
         console.log(this.state.illnessData);
     }
 
-    renderProduct = ({illness_name, symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10}) => (
+    renderProduct = ({illness_name, symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10, treatment1, treatment2, treatment3, treatment4, treatment5, treatment6, treatment7, treatment8, treatment9, treatment10}) => (
         <div className="report col-5 ml-1 mr-1 mb-2">
             <p className="illness_name" key={illness_name}><b>Name:</b> {illness_name}</p>
             <p className="symptom_title">Symptoms Include:</p>
@@ -43,6 +43,17 @@ export default class DiseaseSearch extends React.Component {
             {symptom8 !== null && <li className="symptom_list" key={symptom8}>{symptom8}</li>}
             {symptom9 !== null && <li className="symptom_list" key={symptom9}>{symptom9}</li>}
             {symptom10 !== null && <li className="symptom_list" key={symptom10}>{symptom10}</li>}
+            <p className="symptom_title">Available Treatments:</p>
+            {treatment1 !== null && <li className="symptom_list" key={treatment1}>{treatment1}</li>}
+            {treatment2 !== null && <li className="symptom_list" key={treatment2}>{treatment2}</li>}
+            {treatment3 !== null && <li className="symptom_list" key={treatment3}>{treatment3}</li>}
+            {treatment4 !== null && <li className="symptom_list" key={treatment4}>{treatment4}</li>}
+            {treatment5 !== null && <li className="symptom_list" key={treatment5}>{treatment5}</li>}
+            {treatment6 !== null && <li className="symptom_list" key={treatment6}>{treatment6}</li>}
+            {treatment7 !== null && <li className="symptom_list" key={treatment7}>{treatment7}</li>}
+            {treatment8 !== null && <li className="symptom_list" key={treatment8}>{treatment8}</li>}
+            {treatment9 !== null && <li className="symptom_list" key={treatment9}>{treatment9}</li>}
+            {treatment10 !== null && <li className="symptom_list" key={treatment10}>{treatment10}</li>}
         </div>)
 
     render() {
