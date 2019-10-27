@@ -7,10 +7,13 @@ import IllnessReportForm from './IllnessReportForm.js';
 export default class ReportIllness extends React.Component {
     constructor(props) {
         super(props);
+
+        // Binding functions
+        this.insertData = this.insertData.bind(this);
     }
 
     insertData(illnessName, duration, timeOfYear, gender, levelOfDiscomfort) {
-
+        // insertData has access to all elements in the IllnessReportForm form
     }
 
     render() {
@@ -19,7 +22,7 @@ export default class ReportIllness extends React.Component {
                 <div className="col-10">
                     <h2>Report Your Illness</h2>
                     <h4>How are you feeling?</h4>
-                    <IllnessReportForm/>
+                    <IllnessReportForm  pushData={this.insertData}/>
                 </div>
             </div>
         );

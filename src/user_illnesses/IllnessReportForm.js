@@ -22,6 +22,8 @@ export default class IllnessReportForm extends React.Component {
         this._handleKeyDown = this._handleKeyDown.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    // Manages any changes made in the form, and updates the objects state
     handleChange(e) {
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
 
@@ -31,6 +33,7 @@ export default class IllnessReportForm extends React.Component {
 
     }
 
+    // Checks for if the user presses enter while using the form
     _handleKeyDown(e) {
         if(e.key === 'Enter') {
             this.handleChange(e);
@@ -38,12 +41,14 @@ export default class IllnessReportForm extends React.Component {
         }
     }
 
+    // Submits the data in the form for inserting into the database
     handleSubmit() {
         if(this.state.illness_name === "") {
             alert("Please enter the name of your illness.");
         }
         else {
-            this.props.fetchData(this.state.input);
+            this.props.pushData(this.state.illness_name, this.state.duration,
+                this.state.timeOfYear, this.state.gender, this.state.discomfort);
         }
     }
 
