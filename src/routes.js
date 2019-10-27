@@ -58,7 +58,7 @@ app.get('/illnesses/getIllnessByName', function (req, res) {
       // If some error occurs, we throw an error.
       if (error) throw error;
 
-      // Getting the 'response' from the database and sending it to our route. This is were the data is.
+      // Getting the 'response' from the database and sending it to our route.
       res.send(results);
     });
   });
@@ -76,7 +76,7 @@ app.get('/illnesses/getIllnessBySymptom', function (req, res) {
       // If some error occurs, we throw an error.
       if (error) throw error;
 
-      // Getting the 'response' from the database and sending it to our route. This is where the data is.
+      // Getting the 'response' from the database and sending it to our route.
       res.send(results);
     });
   });

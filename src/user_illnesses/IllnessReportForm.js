@@ -8,15 +8,21 @@ export default class IllnessReportForm extends React.Component {
         super(props);
 
         this.state = {
+            textInput: "",
             illness_name: "",
             duration: "",
             timeOfYear: "",
             gender: "",
             discomfort: -1,
         }
+
+        // Bind functions
+        this.handleChange = this.handleChange.bind(this);
+        this._handleKeyDown = this._handleKeyDown.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(e) {
-        this.setState({input: e.target.value});
+        this.setState({textInput: e.target.value});
     }
 
     _handleKeyDown(e) {
