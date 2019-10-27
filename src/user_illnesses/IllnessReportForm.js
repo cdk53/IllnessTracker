@@ -55,10 +55,18 @@ export default class IllnessReportForm extends React.Component {
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select><br/>
-                    Gender:<br/>
+                    Discomfort Level:<br/>
                     <select>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="2">3</option>
+                        <option value="2">4</option>
+                        <option value="2">5</option>
+                        <option value="2">6</option>
+                        <option value="2">7</option>
+                        <option value="2">8</option>
+                        <option value="2">9</option>
+                        <option value="2">10</option>
                     </select><br/>
 
                     <button onClick={this.handleSubmit}>Submit</button>

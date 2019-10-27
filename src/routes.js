@@ -45,12 +45,31 @@ app.get('/illnesses', function (req, res) {
     });
   });
 });
-// Returns all illness data for a given from illness table
-app.get('/illnesses/get', function (req, res) {
+
+// Returns all illness data for a given illness name from the symptoms table
+app.get('/illnesses/getIllnessByName', function (req, res) {
     // Connecting to the database.
     connection.getConnection(function (err, connection) {
     const {name} = req.query;
     const SELECT_ILLNESS = 'SELECT * FROM symptoms WHERE illness_name like"%' + name + '%"';
+
+    // Executing the MySQL query (select all data from the 'users' table).
+    connection.query(SELECT_ILLNESS, function (error, results, fields) {
+      // If some error occurs, we throw an error.
+      if (error) throw error;
+
+      // Getting the 'response' from the database and sending it to our route. This is were the data is.
+      res.send(results);
+    });
+  });
+});
+
+// Returns all illness data for a given symptom name from the symptoms table
+app.get('/illnesses/getIllnessBySymptom', function (req, res) {
+    // Connecting to the database.
+    connection.getConnection(function (err, connection) {
+    const {name} = req.query;
+    const SELECT_ILLNESS = 'call search_by_symptom("'+name+'")';
 
     // Executing the MySQL query (select all data from the 'users' table).
     connection.query(SELECT_ILLNESS, function (error, results, fields) {

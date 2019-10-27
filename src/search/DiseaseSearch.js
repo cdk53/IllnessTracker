@@ -18,7 +18,7 @@ export default class DiseaseSearch extends React.Component {
     }
 
     fetchData(givenName) {
-        fetch('http://localhost:4000/illnesses/get?name='+givenName)
+        fetch('http://localhost:4000/illnesses/getIllnessByName?name='+givenName)
             .then(response => response.json())
             .then(response => this.setState({illnessData: response}))
         // Since we have retrieved data, set hasData to true
