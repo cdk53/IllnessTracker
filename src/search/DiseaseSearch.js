@@ -69,7 +69,6 @@ export default class DiseaseSearch extends React.Component {
                     <SearchBar fetchData={this.fetchData} defaultText="Illness Name"/>
                     <div className="row justify-content-center">
                         {this.generateReport()}
-                        {console.log(this.state.illnessData)}
                     </div>
                 </div>
             </div>
