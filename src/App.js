@@ -3,16 +3,18 @@ import './App.css';
 import MenuBar from './menu/MenuBar.js';
 import DiseaseSearch from './search/DiseaseSearch.js';
 import SymptomSearch from './search/SymptomSearch.js';
+import ReportIllness from './user_illnesses/ReportIllness.js';
 
 // These constants will track which panel is being shown
-const DISEASE_SEARCH = 1;
+const ILLNESS_SEARCH = 1;
 const SYMPTOM_SEARCH = 2;
+const ILLNESS_REPORT = 3;
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         // Set state to default to disease search page
-        this.state = {activePanel: DISEASE_SEARCH};
+        this.state = {activePanel: ILLNESS_SEARCH};
         // Bind functions to App class
         this.changePanel = this.changePanel.bind(this);
     }
@@ -25,12 +27,14 @@ class App extends React.Component {
      * and return the component of the panel that is to be displayed
      */
     displayHandler() {
-        if(this.state.activePanel == DISEASE_SEARCH){
+        if(this.state.activePanel == ILLNESS_SEARCH){
             return (<DiseaseSearch/>);
         }
-        else if (this.state.activePanel == SYMPTOM_SEARCH)
-        {
+        else if (this.state.activePanel == SYMPTOM_SEARCH){
             return (<SymptomSearch/>)
+        }
+        else if (this.state.activePanel == ILLNESS_REPORT) {
+            return (<ReportIllness/>)
         }
     }
 
