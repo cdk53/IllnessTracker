@@ -2,7 +2,7 @@ import React from 'react';
 import './search.css';
 import SearchBar from './SearchBar.js'
 
-// This class will encompass searching functionality
+// This class will encompass searching functionality by illness name
 
 export default class DiseaseSearch extends React.Component {
     constructor(props) {
@@ -50,8 +50,8 @@ export default class DiseaseSearch extends React.Component {
                 <div className="col-6">
                     <h2>Welcome to the Illness Tracker</h2>
                     <h4>Enter the name of an illness to learn more about it</h4>
-                    <SearchBar fetchData={this.fetchData}/>
-                    {this.state.hasData ? this.state.illnessData.map(this.renderProduct) : "HELLO"}
+                    <SearchBar fetchData={this.fetchData} defaultText="Enter Illness Name"/>
+                    {this.state.hasData && this.state.illnessData.map(this.renderProduct)}
                 </div>
             </div>
         );

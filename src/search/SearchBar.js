@@ -14,9 +14,17 @@ export default class SearchBar extends React.Component {
         // Function bindings
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this._handleKeyDown = this._handleKeyDown.bind(this);
     }
     handleChange(e) {
         this.setState({input: e.target.value});
+    }
+
+    _handleKeyDown(e) {
+        if(e.key === 'Enter') {
+            this.handleChange(e);
+            this.handleSubmit();
+        }
     }
 
     handleSubmit() {
@@ -27,9 +35,8 @@ export default class SearchBar extends React.Component {
         return(
             <div className="row">
                 <div className="col-12">
-                    <form>
-                        <input type="text" name="search" placeholder="illness name" onChange={this.handleChange}></input>
-                    </form>
+                    <input type="text" name="search" placeholder={this.props.defaultText}
+                        onChange={this.handleChange} onKeyDown={this._handleKeyDown}></input>
                     <button onClick={this.handleSubmit}>Submit</button>
                 </div>
             </div>
