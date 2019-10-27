@@ -3,3 +3,7 @@
     color: var(--dark-gray);
     background-color: var(--smoke-white);
 }
+
+.report {
+    border: 1px solid black;
+}

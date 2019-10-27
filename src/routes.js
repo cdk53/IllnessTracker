@@ -45,12 +45,12 @@ app.get('/illnesses', function (req, res) {
     });
   });
 });
-// Returns all illness data for a given illness from illness table
+// Returns all illness data for a given from illness table
 app.get('/illnesses/get', function (req, res) {
     // Connecting to the database.
     connection.getConnection(function (err, connection) {
     const {name} = req.query;
-    const SELECT_ILLNESS = 'SELECT * FROM symptoms LIKE illness_name="' + name + '"';
+    const SELECT_ILLNESS = 'SELECT * FROM symptoms WHERE illness_name like"%' + name + '%"';
 
     // Executing the MySQL query (select all data from the 'users' table).
     connection.query(SELECT_ILLNESS, function (error, results, fields) {
