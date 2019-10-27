@@ -30,7 +30,7 @@ export default class SymptomSearch extends React.Component {
     }
 
     renderProduct = ({illness_name, symptom1, symptom2, symptom3, symptom4, symptom5, symptom6, symptom7, symptom8, symptom9, symptom10}) => (
-        <div className="report">
+        <div className="report col-5 ml-1 mr-1 mb-2">
             <p className="illness_name" key={illness_name}><b>Name:</b> {illness_name}</p>
             <p className="symptom_title">Symptoms Include:</p>
             {symptom1 !== null && <li className="symptom_list" key={symptom1}>{symptom1}</li>}
@@ -48,11 +48,13 @@ export default class SymptomSearch extends React.Component {
     render() {
         return(
             <div className="row justify-content-center diseaseSearchContainer">
-                <div className="col-6">
+                <div className="col-10">
                     <h2>Welcome to the Illness Tracker</h2>
-                    <h4>Search for an illness by smyptoms</h4>
+                    <h4>Search for an illness by symptoms</h4>
                     <SearchBar fetchData={this.fetchData} defaultText="Symptom"/>
-                    {this.state.hasData && this.state.illnessData.map(this.renderProduct)}
+                    <div className="row justify-content-center">
+                        {this.state.hasData && this.state.illnessData.map(this.renderProduct)}
+                    </div>
                 </div>
             </div>
         );
