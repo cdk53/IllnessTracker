@@ -46,7 +46,7 @@ export default class DiseaseSearch extends React.Component {
             {symptom8 !== null && <li className="symptom_list" key={symptom8}>{symptom8}</li>}
             {symptom9 !== null && <li className="symptom_list" key={symptom9}>{symptom9}</li>}
             {symptom10 !== null && <li className="symptom_list" key={symptom10}>{symptom10}</li>}
-            <br/><p className="symptom_title">Available Treatments:</p>
+            <br/>{treatment1 !== null && <p className="symptom_title">Available Treatments:</p>}
             {treatment1 !== null && <li className="symptom_list" key={treatment1}>{treatment1}</li>}
             {treatment2 !== null && <li className="symptom_list" key={treatment2}>{treatment2}</li>}
             {treatment3 !== null && <li className="symptom_list" key={treatment3}>{treatment3}</li>}
