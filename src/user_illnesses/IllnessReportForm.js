@@ -15,7 +15,7 @@ export default class IllnessReportForm extends React.Component {
             timeOfYear: "spring",
             gender: "m",
             discomfort: 1,
-        }
+        };
 
         // Bind functions
         this.handleChange = this.handleChange.bind(this);

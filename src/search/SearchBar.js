@@ -9,7 +9,7 @@ export default class SearchBar extends React.Component {
 
         this.state = {
             input: ""
-        }
+        };
 
         // Function bindings
         this.handleChange = this.handleChange.bind(this);

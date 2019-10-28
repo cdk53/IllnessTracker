@@ -11,7 +11,7 @@ export default class SymptomSearch extends React.Component {
         this.state = {
             illnessData: [],
             hasData: false
-        }
+        };
 
         this.fetchData = this.fetchData.bind(this);
         this.generateReport = this.generateReport.bind(this);
@@ -20,7 +20,7 @@ export default class SymptomSearch extends React.Component {
     fetchData(givenSymptom) {
         fetch('http://localhost:4000/illnesses/getIllnessBySymptom?name='+givenSymptom)
             .then(response => response.json())
-            .then(response => this.setState({illnessData: response}))
+            .then(response => this.setState({illnessData: response}));
         // Since we have retrieved data, set hasData to true
         this.setState({hasData: true});
     }

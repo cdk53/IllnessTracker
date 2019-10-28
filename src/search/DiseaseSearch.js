@@ -1,6 +1,6 @@
 import React from 'react';
 import './search.css';
-import SearchBar from './SearchBar.js'
+import SearchBar from './SearchBar.js';
 
 // This class will encompass searching functionality by illness name
 
@@ -11,7 +11,7 @@ export default class DiseaseSearch extends React.Component {
         this.state = {
             illnessData: [],
             hasData: false
-        }
+        };
 
         this.fetchData = this.fetchData.bind(this);
         this.generateReport = this.generateReport.bind(this);
@@ -20,7 +20,7 @@ export default class DiseaseSearch extends React.Component {
     fetchData(givenName) {
         fetch('http://localhost:4000/illnesses/getIllnessByName?name='+givenName)
             .then(response => response.json())
-            .then(response => this.setState({illnessData: response}))
+            .then(response => this.setState({illnessData: response}));
 
         // Data has been fetched
         this.setState({hasData: true});
@@ -60,7 +60,7 @@ export default class DiseaseSearch extends React.Component {
         </div>);
 
     render() {
-        if(typeof this.state.illnessData[0] !== 'undefined') {this.generateReport();}
+        console.log(this.state.illnessData);
         return(
             <div className="row justify-content-center diseaseSearchContainer">
                 <div className="col-10">
