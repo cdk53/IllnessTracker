@@ -15,12 +15,23 @@ export default class IllnessReportForm extends React.Component {
             timeOfYear: "spring",
             gender: "m",
             discomfort: 1,
+            // This blank value is required so null values aren't pulled
+            illnessNames: [{illness_name: ""}],
+            dataRetrieved: false
         };
 
         // Bind functions
         this.handleChange = this.handleChange.bind(this);
         this._handleKeyDown = this._handleKeyDown.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.generateDataList = this.generateDataList.bind(this);
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:4000/illnesses/allIllnessByName')
+            .then(response => response.json())
+            .then(response => this.setState({illnessNames: response}));
+        this.setState({dataRetrieved: true});
     }
 
     // Manages any changes made in the form, and updates the objects state
@@ -53,14 +64,32 @@ export default class IllnessReportForm extends React.Component {
         }
     }
 
+    generateDataList() {
+        return (
+            <datalist id="illnessName">
+              {this.state.illnessNames.map(function(name){
+                return <option value={name.illness_name}/>;
+              })}
+            </datalist>
+        );
+    }
+
     render() {
         return(
             <div className="row">
                 <div className="col-12 search_bar">
                     <div className="formItemWrapper">
+                    <br/>
+                    Illness Name:<br/>
                         <input type="text" name="illness_name" value={this.state.illness_name} placeholder="Name of Illness"
-                            onChange={this.handleChange} onKeyDown={this._handleKeyDown}
-                            className="form-control"></input><br/>
+                            onChange={this.handleChange} onKeyDown={this._handleKeyDown} autoComplete="on"
+                            list="illnessName" className="form-control"></input>
+                            {this.generateDataList()}
+                        <datalist id="illnessName">
+                            <option value="Common Cold"/>
+                            <option value="Flu"/>
+                        </datalist>
+                        <br/>
                     </div>
                     <div className="formItemWrapper">
                         Duration:<br/>
