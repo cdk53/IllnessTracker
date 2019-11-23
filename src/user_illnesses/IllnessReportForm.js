@@ -100,10 +100,6 @@ export default class IllnessReportForm extends React.Component {
                             onChange={this.handleChange} onKeyDown={this._handleKeyDown} autoComplete="on"
                             list="illnessName" className="form-control"></input>
                             {this.generateDataList()}
-                        <datalist id="illnessName">
-                            <option value="Common Cold"/>
-                            <option value="Flu"/>
-                        </datalist>
                         <br/>
                     </div>
                     <div className="formItemWrapper">
