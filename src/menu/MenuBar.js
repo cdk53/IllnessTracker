@@ -11,10 +11,11 @@ export default class MenuBar extends React.Component {
     render() {
         return(
             <div className="row menuBar justify-content-center">
-                <div className="col-4">
+                <div className="col-6">
                     <button onClick={() => {this.props.selectionHandler(1)}}>Illness Search</button>
                     <button onClick={() => {this.props.selectionHandler(2)}}>Symptom Search</button>
                     <button onClick={() => {this.props.selectionHandler(3)}}>Report Illness</button>
+                    <button onClick={() => {this.props.selectionHandler(4)}}>Illness Statistics</button>
                 </div>
             </div>
         );

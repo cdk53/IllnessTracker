@@ -23,7 +23,7 @@ export default class ReportIllness extends React.Component {
             <div className="row justify-content-center diseaseSearchContainer">
                 <div className="col-10 reportForm">
                     <h2>Reporting Your Illness</h2>
-                    <h4>Provide some infromation about your current condition</h4>
+                    <h4>Provide some information about your current condition</h4>
                     <IllnessReportForm  pushData={this.insertData}/>
                 </div>
             </div>
