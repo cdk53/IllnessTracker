@@ -27,7 +27,7 @@ const app = express();
 
 // Allow all CORS connections
 app.use((req, res, next) => {
-    console.log('request', req.url, req.body, req.method);
+    //console.log('request', req.url, req.body, req.method);
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-token");
     if(req.method === 'OPTIONS') {
@@ -44,6 +44,21 @@ app.get('/illnesses', function (req, res) {
     connection.getConnection(function (err, connection) {
     // Executing the MySQL query (select all data from the 'users' table).
     connection.query('SELECT * FROM symptoms', function (error, results, fields) {
+      // If some error occurs, we throw an error.
+      if (error) throw error;
+
+      // Getting the 'response' from the database and sending it to our route. This is were the data is.
+      res.send(results);
+    });
+  });
+});
+
+// Returns all illnesses by name
+app.get('/illnesses/allIllnessByName', function (req, res) {
+    // Connecting to the database.
+    connection.getConnection(function (err, connection) {
+    // Executing the MySQL query (select all data from the 'users' table).
+    connection.query('SELECT illness_name FROM symptoms', function (error, results, fields) {
       // If some error occurs, we throw an error.
       if (error) throw error;
 
@@ -95,7 +110,6 @@ app.get('/illnesses/insertUserReportedIllnessData', function (req, res) {
     connection.getConnection(function (err, connection) {
     const {name, dur, time_of, gender, discomf} = req.query;
     const INSERT_INTO_USER_REPORTED_ILLNESSES = 'insert into illnesses.user_reported_illnesses values("'+name+'", "'+dur+'", "'+time_of+'", "'+gender+'", "'+discomf+'")';
-    console.log(INSERT_INTO_USER_REPORTED_ILLNESSES);
     // Executing the MySQL query (select all data from the 'users' table).
     connection.query(INSERT_INTO_USER_REPORTED_ILLNESSES, function (error, results, fields) {
       // If some error occurs, we throw an error.
