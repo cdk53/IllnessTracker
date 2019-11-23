@@ -1,8 +1,23 @@
 import React from 'react';
 import './statistics.css';
+import * as Highcharts from "highcharts";
+import HighchartsReact from 'highcharts-react-official';
 
-// This class will handle self-reported illnesses by the user
+const options = {
+  chart: {
+    type: 'spline'
+  },
+  title: {
+    text: 'My chart'
+  },
+  series: [
+    {
+      data: [1, 2, 1, 4, 3, 6]
+    }
+  ]
+};
 
+// This class will present statistics visualization based on user-reported illnesses
 export default class IllnessStatistics extends React.Component {
     constructor(props) {
         super(props);
@@ -89,6 +104,7 @@ export default class IllnessStatistics extends React.Component {
                         list="illnessName"></input>
                         {this.generateDataList()}
                     <button onClick={this.fetchData}>Submit</button>
+                    <HighchartsReact highcharts={Highcharts} options={options} />
                 </div>
             </div>
         );
