@@ -25,6 +25,7 @@ export default class IllnessReportForm extends React.Component {
         this._handleKeyDown = this._handleKeyDown.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.generateDataList = this.generateDataList.bind(this);
+        this.nameExists = this.nameExists.bind(this);
     }
 
     componentDidMount() {
@@ -52,10 +53,24 @@ export default class IllnessReportForm extends React.Component {
         }
     }
 
+    nameExists() {
+        for(var i = 0; i < this.state.illnessNames.length; i++) {
+          if(this.state.illnessNames[i].illness_name == this.state.illness_name) {
+              return true;
+          }
+        }
+        // Item not found
+        return false;
+    }
+
     // Submits the data in the form for inserting into the database
     handleSubmit() {
         if(this.state.illness_name === "") {
             alert("Please enter the name of your illness.");
+        }
+        else if(!this.nameExists()) {
+            // Only allow names of illness found in the database
+            alert("Illness name not recognized. Please choose from the list of illness names");
         }
         else {
             this.props.pushData(this.state.illness_name, this.state.duration,
