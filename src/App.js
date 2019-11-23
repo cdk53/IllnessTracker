@@ -14,7 +14,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         // Set state to default to disease search page
-        this.state = {activePanel: ILLNESS_SEARCH};
+        this.state = {activePanel: ILLNESS_REPORT};
         // Bind functions to App class
         this.changePanel = this.changePanel.bind(this);
     }

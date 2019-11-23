@@ -1,0 +1,15 @@
+.reportForm {
+    border: 1px solid var(--dark-gray);
+    padding: 20px 50px 80px 50px;
+    text-align: center;
+}
+
+.formItemWrapper {
+    width: 70%;
+    display: inline-block;
+    text-align: left;
+}
+
+.submitButton {
+    width: 170px;
+}

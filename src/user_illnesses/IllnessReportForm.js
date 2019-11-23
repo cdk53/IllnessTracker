@@ -49,6 +49,7 @@ export default class IllnessReportForm extends React.Component {
         else {
             this.props.pushData(this.state.illness_name, this.state.duration,
                 this.state.timeOfYear, this.state.gender, this.state.discomfort);
+            alert("Your entry has been recorded.");
         }
     }
 
@@ -56,41 +57,52 @@ export default class IllnessReportForm extends React.Component {
         return(
             <div className="row">
                 <div className="col-12 search_bar">
-                    <input type="text" name="illness_name" value={this.state.illness_name} placeholder="Name of Illness"
-                        onChange={this.handleChange} onKeyDown={this._handleKeyDown}></input><br/>
-                    Duration:<br/>
-                    <select name="duration" onChange={this.handleChange}>
-                        <option value="days">Days</option>
-                        <option value="weeks">Weeks</option>
-                        <option value="months">Months</option>
-                        <option value="years">Years</option>
-                    </select><br/>
-                    Time Of Year:<br/>
-                    <select name="timeOfYear" onChange={this.handleChange}>
-                        <option value="spring">Spring</option>
-                        <option value="summer">Summer</option>
-                        <option value="fall">Fall</option>
-                        <option value="winter">Winter</option>
-                    </select><br/>
-                    Gender:<br/>
-                    <select name="gender" onChange={this.handleChange}>
-                        <option value="m">Male</option>
-                        <option value="f">Female</option>
-                    </select><br/>
-                    Discomfort Level:<br/>
-                    <select name="discomfort" onChange={this.handleChange}>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select><br/>
-                    <button onClick={this.handleSubmit}>Submit</button>
+                    <div className="formItemWrapper">
+                        <input type="text" name="illness_name" value={this.state.illness_name} placeholder="Name of Illness"
+                            onChange={this.handleChange} onKeyDown={this._handleKeyDown}
+                            className="form-control"></input><br/>
+                    </div>
+                    <div className="formItemWrapper">
+                        Duration:<br/>
+                        <select name="duration" className="form-control" onChange={this.handleChange}>
+                            <option value="days">Days</option>
+                            <option value="weeks">Weeks</option>
+                            <option value="months">Months</option>
+                            <option value="years">Years</option>
+                        </select><br/>
+                    </div>
+                    <div className="formItemWrapper">
+                        Time Of Year:<br/>
+                        <select name="timeOfYear" className="form-control" onChange={this.handleChange}>
+                            <option value="spring">Spring</option>
+                            <option value="summer">Summer</option>
+                            <option value="fall">Fall</option>
+                            <option value="winter">Winter</option>
+                        </select><br/>
+                    </div>
+                    <div className="formItemWrapper">
+                        Gender:<br/>
+                        <select name="gender" className="form-control" onChange={this.handleChange}>
+                            <option value="m">Male</option>
+                            <option value="f">Female</option>
+                        </select><br/>
+                    </div>
+                    <div className="formItemWrapper">
+                        Discomfort Level:<br/>
+                        <select name="discomfort" className="form-control" onChange={this.handleChange}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div><br/><br/>
+                    <button className="btn btn-primary submitButton" onClick={this.handleSubmit}>Submit</button>
                 </div>
             </div>
         );

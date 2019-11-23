@@ -14,7 +14,6 @@ export default class ReportIllness extends React.Component {
 
     insertData(illnessName, duration, timeOfYear, gender, discomfort) {
         // insertData has access to all elements in the IllnessReportForm form
-        console.log("insertData ran");
         fetch('http://localhost:4000/illnesses/insertUserReportedIllnessData?name='+illnessName+'&dur='+duration+'&time_of='+timeOfYear+'&gender='+gender+'&discomf='+discomfort)
             .then(response => response.json());
     }
@@ -22,9 +21,9 @@ export default class ReportIllness extends React.Component {
     render() {
         return(
             <div className="row justify-content-center diseaseSearchContainer">
-                <div className="col-10">
-                    <h2>Report Your Illness</h2>
-                    <h4>How are you feeling?</h4>
+                <div className="col-10 reportForm">
+                    <h2>Reporting Your Illness</h2>
+                    <h4>Provide some infromation about your current condition</h4>
                     <IllnessReportForm  pushData={this.insertData}/>
                 </div>
             </div>
