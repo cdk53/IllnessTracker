@@ -36,7 +36,8 @@ export default class SearchBar extends React.Component {
             <div className="row">
                 <div className="col-12 search_bar">
                     <input type="text" name="search" placeholder={this.props.defaultText}
-                        onChange={this.handleChange} onKeyDown={this._handleKeyDown}></input>
+                        onChange={this.handleChange} onKeyDown={this._handleKeyDown}
+                        autoComplete="off"></input>
                     <button onClick={this.handleSubmit}>Submit</button>
                 </div>
             </div>

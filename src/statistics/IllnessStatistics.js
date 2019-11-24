@@ -2,6 +2,7 @@ import React from 'react';
 import './statistics.css';
 import * as Highcharts from "highcharts";
 import HighchartsReact from 'highcharts-react-official';
+import GenderStats from './GenderStats.js';
 
 const options = {
   chart: {
@@ -27,6 +28,7 @@ export default class IllnessStatistics extends React.Component {
             input: "",
             illnessNames: [{illness_name: ""}], // Used for autofill functionality
             namesRetrieved: false, // Used for autofill functionality
+            searched: false, // Used only for first time searching
         }
 
         // Binding functions
@@ -35,6 +37,7 @@ export default class IllnessStatistics extends React.Component {
         this._handleKeyDown = this._handleKeyDown.bind(this);
         this.generateDataList = this.generateDataList.bind(this);
         this.nameExists = this.nameExists.bind(this);
+        this.generateCharts = this.generateCharts.bind(this);
     }
 
     // Handles any change presented by a key press by value e
@@ -83,7 +86,7 @@ export default class IllnessStatistics extends React.Component {
             fetch('http://localhost:4000/user_reported/getAllByName?name='+this.state.input)
                 .then(response => response.json())
                 .then(response => this.setState({illnessData: response}));
-            this.setState({dataRetrieved: true});
+            this.setState({dataRetrieved: true, searched: true});
         }
     }
 
@@ -94,8 +97,19 @@ export default class IllnessStatistics extends React.Component {
         this.setState({namesRetrieved: true});
     }
 
+    generateCharts() {
+        if(this.state.dataRetrieved && typeof this.state.illnessData[0] !== 'undefined' &&
+            this.state.illnessData[0].illness_name !== '') {
+            return (
+                <GenderStats statistics={this.state.illnessData}
+                    givenName={this.state.illnessData[0].illness_name}/>
+            );
+        } else if(this.state.searched) {
+            return (<p>No user reported cases found.</p>);
+        }
+    }
+
     render() {
-        console.log(this.state.illnessData);
         return(
             <div className="row justify-content-center diseaseSearchContainer">
                 <div className="col-10 reportForm">
@@ -105,7 +119,7 @@ export default class IllnessStatistics extends React.Component {
                         list="illnessName"></input>
                         {this.generateDataList()}
                     <button onClick={this.fetchData}>Submit</button>
-                    <HighchartsReact highcharts={Highcharts} options={options} />
+                    {this.generateCharts()}
                 </div>
             </div>
         );
