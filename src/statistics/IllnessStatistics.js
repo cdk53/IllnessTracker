@@ -80,7 +80,7 @@ export default class IllnessStatistics extends React.Component {
             // Only allow names of illness found in the database
             alert("Illness name not recognized. Please choose from the list of illness names");
         } else {
-            fetch('http://localhost:4000/illnesses/getIllnessByName?name='+this.state.input)
+            fetch('http://localhost:4000/user_reported/getAllByName?name='+this.state.input)
                 .then(response => response.json())
                 .then(response => this.setState({illnessData: response}));
             this.setState({dataRetrieved: true});
@@ -95,6 +95,7 @@ export default class IllnessStatistics extends React.Component {
     }
 
     render() {
+        console.log(this.state.illnessData);
         return(
             <div className="row justify-content-center diseaseSearchContainer">
                 <div className="col-10 reportForm">

@@ -68,6 +68,23 @@ app.get('/illnesses/allIllnessByName', function (req, res) {
   });
 });
 
+// Returns all contents of user reported illness by name
+app.get('/user_reported/getAllByName', function (req, res) {
+    // Connecting to the database.
+    connection.getConnection(function (err, connection) {
+    const {name} = req.query;
+    const QUERY = 'SELECT * FROM user_reported_illnesses WHERE illness_name="' + name +'";';
+    // Executing the MySQL query (select all data from the 'users' table).
+    connection.query(QUERY, function (error, results, fields) {
+      // If some error occurs, we throw an error.
+      if (error) throw error;
+
+      // Getting the 'response' from the database and sending it to our route. This is were the data is.
+      res.send(results);
+    });
+  });
+});
+
 // Returns all illness data for a given illness name from the symptoms table
 app.get('/illnesses/getIllnessByName', function (req, res) {
     // Connecting to the database.
