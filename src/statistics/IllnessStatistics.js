@@ -4,20 +4,6 @@ import * as Highcharts from "highcharts";
 import HighchartsReact from 'highcharts-react-official';
 import GenderStats from './GenderStats.js';
 
-const options = {
-  chart: {
-    type: 'spline'
-  },
-  title: {
-    text: 'My chart'
-  },
-  series: [
-    {
-      data: [1, 2, 1, 4, 3, 6]
-    }
-  ]
-};
-
 // This class will present statistics visualization based on user-reported illnesses
 export default class IllnessStatistics extends React.Component {
     constructor(props) {
@@ -101,8 +87,13 @@ export default class IllnessStatistics extends React.Component {
         if(this.state.dataRetrieved && typeof this.state.illnessData[0] !== 'undefined' &&
             this.state.illnessData[0].illness_name !== '') {
             return (
-                <GenderStats statistics={this.state.illnessData}
-                    givenName={this.state.illnessData[0].illness_name}/>
+                <div className="row">
+                    <div className="col-6">
+                        <GenderStats statistics={this.state.illnessData}
+                                     givenName={this.state.illnessData[0].illness_name}
+                                     className="defaultChart"/>
+                    </div>
+                </div>
             );
         } else if(this.state.searched) {
             return (<p>No user reported cases found.</p>);
@@ -118,7 +109,7 @@ export default class IllnessStatistics extends React.Component {
                         onChange={this.handleChange} onKeyDown={this._handleKeyDown} autoComplete="on"
                         list="illnessName"></input>
                         {this.generateDataList()}
-                    <button onClick={this.fetchData}>Submit</button>
+                    <button onClick={this.fetchData}>Submit</button><br/><br/>
                     {this.generateCharts()}
                 </div>
             </div>
