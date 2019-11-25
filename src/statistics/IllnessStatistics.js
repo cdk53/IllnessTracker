@@ -91,6 +91,10 @@ export default class IllnessStatistics extends React.Component {
             this.state.illnessData[0].illness_name !== '') {
             return (
                 <div className="row">
+                    <div className="col-12">
+                        <h3>Showing statistics for {this.state.illnessData.length}
+                        cases of {this.state.illnessData[0].illness_name}</h3>
+                    </div>
                     <div className="col-6">
                         <GenderStats statistics={this.state.illnessData}
                                      givenName={this.state.illnessData[0].illness_name}/>
