@@ -4,6 +4,7 @@ import * as Highcharts from "highcharts";
 import HighchartsReact from 'highcharts-react-official';
 import GenderStats from './GenderStats.js';
 import DiscomfortStats from './DiscomfortStats.js';
+import SeasonStats from './SeasonStats.js';
 
 // This class will present statistics visualization based on user-reported illnesses
 export default class IllnessStatistics extends React.Component {
@@ -94,6 +95,10 @@ export default class IllnessStatistics extends React.Component {
                                      givenName={this.state.illnessData[0].illness_name}/>
                          <DiscomfortStats statistics={this.state.illnessData}
                                       givenName={this.state.illnessData[0].illness_name}/>
+                    </div>
+                    <div className="col-6">
+                        <SeasonStats statistics={this.state.illnessData}
+                                     givenName={this.state.illnessData[0].illness_name}/>
                     </div>
                 </div>
             );
