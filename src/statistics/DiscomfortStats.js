@@ -11,7 +11,7 @@ export default class DiscomfortStats extends React.Component {
         const chartName = this.props.givenName + " by Discomfort";
 
         // Counter for each discomfort value (Don't judge this code please)
-        var discomfortValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let discomfortValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
         for(var i = 0; i < this.props.statistics.length; i++) {
             discomfortValue[this.props.statistics[i].discomfort - 1]++;
@@ -50,7 +50,6 @@ export default class DiscomfortStats extends React.Component {
                 title: {
                     text: 'Number reported'
                 }
-
             },
             legend: {
                 enabled: false

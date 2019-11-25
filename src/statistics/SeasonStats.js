@@ -9,10 +9,10 @@ export default class SeasonStats extends React.Component {
         super(props);
 
         const chartName = this.props.givenName + " by Season";
-        var springCount = 0;
-        var summerCount = 0;
-        var fallCount = 0;
-        var winterCount = 0;
+        let springCount = 0;
+        let summerCount = 0;
+        let fallCount = 0;
+        let winterCount = 0;
 
         for(var i = 0; i < this.props.statistics.length; i++) {
             if(this.props.statistics[i].time_of_year === "spring") {
@@ -56,7 +56,6 @@ export default class SeasonStats extends React.Component {
                 title: {
                     text: 'Number reported'
                 }
-
             },
             legend: {
                 enabled: false
