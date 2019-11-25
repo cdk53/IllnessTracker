@@ -1,0 +1,9 @@
+.noPadding {
+    padding: 0px;
+}
+
+.textBox {
+    width: 60%;
+    display: inline-block;
+    margin: 1px 5px 0px 0px;
+}

@@ -94,13 +94,13 @@ export default class IllnessStatistics extends React.Component {
                     <div className="col-12">
                         <h4>{this.state.illnessData.length} cases of {this.state.illnessData[0].illness_name} have been reported</h4>
                     </div>
-                    <div className="col-6">
+                    <div className="col-6 noPadding">
                         <GenderStats statistics={this.state.illnessData}
                                      givenName={this.state.illnessData[0].illness_name}/>
                          <DiscomfortStats statistics={this.state.illnessData}
                                     givenName={this.state.illnessData[0].illness_name}/>
                     </div>
-                    <div className="col-6">
+                    <div className="col-6 noPadding">
                         <SeasonStats statistics={this.state.illnessData}
                                      givenName={this.state.illnessData[0].illness_name}/>
                         <DurationStats statistics={this.state.illnessData}
@@ -120,7 +120,7 @@ export default class IllnessStatistics extends React.Component {
                     <h2>Search for an illness to see our user-reported statistics</h2>
                     <input type="text" name="illness_name" value={this.state.illness_name} placeholder="Name of Illness"
                         onChange={this.handleChange} onKeyDown={this._handleKeyDown} autoComplete="on"
-                        list="illnessName"></input>
+                        list="illnessName" className="textBox"></input>
                         {this.generateDataList()}
                     <button onClick={this.fetchData}>Submit</button><br/><br/>
                     {this.generateCharts()}
