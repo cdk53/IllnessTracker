@@ -98,7 +98,7 @@ export default class IllnessStatistics extends React.Component {
                         <GenderStats statistics={this.state.illnessData}
                                      givenName={this.state.illnessData[0].illness_name}/>
                          <DiscomfortStats statistics={this.state.illnessData}
-                                    givenName={this.state.illnessData[0].illness_name}/>
+                                     givenName={this.state.illnessData[0].illness_name}/>
                     </div>
                     <div className="col-6 noPadding">
                         <SeasonStats statistics={this.state.illnessData}
