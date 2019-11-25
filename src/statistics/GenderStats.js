@@ -14,7 +14,6 @@ export default class GenderStats extends React.Component {
         let males = 0;
         let females = 0;
         for(var i = 0; i < this.props.statistics.length; i++) {
-            console.log(this.props.statistics[i].gender);
             if(this.props.statistics[i].gender === "m") {
                 males++;
             }
@@ -37,7 +36,7 @@ export default class GenderStats extends React.Component {
                 enabled: false
             },
             tooltip: {
-                pointFormat: '{point.percentage:.1f}%</b>'
+                pointFormat: '{point.percentage:.1f}%  Or ({point.y}) Cases'
             },
             plotOptions: {
                 pie: {
